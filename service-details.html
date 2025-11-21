@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Service Details | Atta ur Rehman & Co</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+        :root { --bg-dark: #0a0a0a; --accent-gold: #C5A059; --text-main: #e0e0e0; --font-head: 'Playfair Display', serif; --font-body: 'Inter', sans-serif; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: var(--bg-dark); color: var(--text-main); font-family: var(--font-body); min-height: 100vh; }
+        
+        /* Header Reuse */
+        header { position: fixed; top: 0; width: 100%; z-index: 1000; background: rgba(0, 0, 0, 0.9); border-bottom: 1px solid #222; padding: 0 20px; }
+        nav { max-width: 1200px; margin: 0 auto; height: 90px; display: flex; justify-content: space-between; align-items: center; }
+        .brand-container { display: flex; align-items: center; gap: 15px; }
+        .logo-img { height: 50px; width: auto; }
+        .brand-text { font-size: 1.2rem; font-weight: 700; color: #fff; }
+        .nav-links { display: flex; gap: 30px; list-style: none; }
+        .nav-links a { color: #fff; text-decoration: none; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1px; transition: 0.3s; }
+        .nav-links a:hover { color: var(--accent-gold); }
+
+        /* Content */
+        .detail-hero {
+            height: 50vh;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.9)), url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80');
+            background-size: cover; background-position: center;
+            display: flex; align-items: flex-end; justify-content: center; padding-bottom: 60px;
+        }
+        .detail-hero h1 { font-family: var(--font-head); font-size: 3rem; color: var(--accent-gold); text-align: center; }
+
+        .detail-content { max-width: 800px; margin: 60px auto; padding: 0 20px; }
+        .detail-content p { line-height: 1.8; color: #ccc; margin-bottom: 20px; font-size: 1.1rem; text-align: justify; }
+        .detail-content ul { margin-left: 20px; margin-bottom: 30px; color: #ccc; }
+        .detail-content li { margin-bottom: 10px; line-height: 1.6; }
+        .detail-content strong { color: #fff; }
+
+        .cta-box { 
+            background: #111; border: 1px solid var(--accent-gold); padding: 40px; 
+            text-align: center; margin-top: 50px; border-radius: 5px;
+        }
+        .btn { 
+            display: inline-block; padding: 12px 35px; background: var(--accent-gold); 
+            color: #000; text-decoration: none; font-weight: bold; margin-top: 15px; 
+            text-transform: uppercase; transition: 0.3s;
+        }
+        .btn:hover { background: #fff; }
+
+        /* WhatsApp Float */
+        .float-wa {
+            position: fixed; bottom: 30px; right: 30px; background-color: #25d366; color: #FFF;
+            width: 60px; height: 60px; border-radius: 50px; text-align: center; font-size: 30px;
+            box-shadow: 2px 2px 3px #999; z-index: 1000; display: flex; align-items: center; justify-content: center;
+            transition: 0.3s;
+        }
+        .float-wa:hover { background-color: #128C7E; transform: scale(1.1); }
+        
+        @media (max-width: 768px) { .nav-links { display: none; } .detail-hero h1 { font-size: 2rem; } }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <div class="brand-container">
+                <!-- Ensure logo.png is in the same folder -->
+                <img src="logo.png" alt="Logo" class="logo-img" onerror="this.style.display='none'">
+                <div class="brand-text">ATTA UR REHMAN & CO</div>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#what-we-do">Services</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="detail-hero">
+        <h1 id="service-title" data-aos="fade-up">Loading Service...</h1>
+    </section>
+
+    <section class="detail-content" data-aos="fade-up">
+        <div id="service-description"></div>
+        
+        <div class="cta-box">
+            <h3>Need Expert Assistance?</h3>
+            <p>Speak directly with Mr. Atta ur Rehman regarding your requirements.</p>
+            <!-- Direct WhatsApp Link -->
+            <a href="https://wa.me/923006499641" class="btn" target="_blank">
+                <i class="fa-brands fa-whatsapp"></i> Get a Quote
+            </a>
+        </div>
+    </section>
+
+    <!-- Floating WhatsApp -->
+    <a href="https://wa.me/923006499641" class="float-wa" target="_blank">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 800 });
+
+        // --- EXTENDED DYNAMIC CONTENT ---
+        const data = {
+            'accounting': {
+                title: "Accounting & Bookkeeping",
+                html: `<p>In today's fast-paced business environment, accurate financial records are not just a regulatory requirement—they are the backbone of any successful enterprise. At Atta ur Rehman & Co, we go far beyond simple data entry. We provide comprehensive, full-cycle bookkeeping and accounting services designed to ensure your ledgers are always balanced, up-to-date, and audit-ready.</p>
+                       <p>Many businesses struggle with disorganized records that lead to confusion at year-end. Our team steps in to maintain clarity throughout the financial year. We utilize modern accounting standards to record every transaction with precision, ensuring that you always have a clear picture of your financial health.</p>
+                       <p><strong>Our Comprehensive Process Includes:</strong></p>
+                       <ul>
+                           <li><strong>Daily Transaction Recording:</strong> Systematic entry of all sales, purchases, and expenses.</li>
+                           <li><strong>Bank & Credit Reconciliation:</strong> Ensuring your internal records match your bank statements perfectly to prevent errors.</li>
+                           <li><strong>Receivables & Payables Management:</strong> Tracking who owes you money and what you owe to suppliers to maintain healthy cash flow.</li>
+                           <li><strong>Monthly Management Reports:</strong> Providing you with regular snapshots of your business performance so you can make data-driven decisions.</li>
+                       </ul>
+                       <p>By outsourcing your accounting to us, you eliminate the stress of numbers and gain the freedom to focus entirely on expanding your core business operations.</p>`
+            },
+            'tax': {
+                title: "Tax Preparation & Compliance",
+                html: `<p>Navigating the complex and ever-changing landscape of tax regulations in Pakistan can be daunting for any business owner. One missed deadline or incorrect filing can lead to severe penalties. Our tax services are meticulously designed to minimize your liability while ensuring absolute compliance with FBR and local authorities.</p>
+                       <p>At Atta ur Rehman & Co, we do not just file returns; we plan ahead. We stay constantly updated on the latest tax laws, exemptions, and credits to ensure you are not paying a rupee more than necessary. We act as your shield against compliance risks, handling everything from registration to final assessment.</p>
+                       <p><strong>Key Tax Services:</strong></p>
+                       <ul>
+                           <li><strong>Income Tax Returns:</strong> Preparation and filing for Corporate entities, AOPs, and Individuals.</li>
+                           <li><strong>Sales Tax Management:</strong> Registration, monthly filing, and reconciliation of input/output tax.</li>
+                           <li><strong>Tax Notice Resolution:</strong> Professional representation before tax authorities to resolve notices and audits effectively.</li>
+                           <li><strong>Strategic Tax Planning:</strong> Proactive advice on how to structure your transactions to optimize financial efficiency legally.</li>
+                       </ul>`
+            },
+            'analysis': {
+                title: "Financial Statement Analysis",
+                html: `<p>Numbers tell a story, but only if you know how to read them. Many business owners see their financial statements as mere compliance documents. We transform these raw numbers into actionable business intelligence. Our financial analysis services delve deep into your Profit & Loss statements, Balance Sheets, and Cash Flow trends to reveal the true health of your organization.</p>
+                       <p>We help you move from "gut feeling" decisions to strategies backed by hard data. Whether you are preparing to pitch to investors, applying for a bank loan, or simply trying to understand why profits are dipping, our detailed analysis provides the clarity you need.</p>
+                       <p><strong>What We Analyze:</strong></p>
+                       <ul>
+                           <li><strong>Profitability Ratios:</strong> Understanding your gross and net margins to see where you are making (or losing) money.</li>
+                           <li><strong>Liquidity & Solvency:</strong> Assessing your ability to pay short-term debts and long-term obligations.</li>
+                           <li><strong>Trend Analysis:</strong> Comparing current performance against historical data to forecast future growth.</li>
+                           <li><strong>Cost Structure:</strong> Identifying unnecessary expenses that are eating into your bottom line.</li>
+                       </ul>`
+            },
+            'advisory': {
+                title: "Business Advisory & Consultancy",
+                html: `<p>Every business faces critical turning points where the right advice can mean the difference between stagnation and growth. Our advisory services provide the high-level strategic guidance needed to navigate these challenges. Mr. Atta ur Rehman utilizes years of experience across various industries to offer practical, realistic solutions tailored to your specific situation.</p>
+                       <p>We don't just point out problems; we help you implement solutions. From the initial stages of company registration to complex corporate restructuring, we stand by your side as a trusted partner in your success.</p>
+                       <p><strong>Our Advisory Scope:</strong></p>
+                       <ul>
+                           <li><strong>Company Incorporation:</strong> Seamless registration with SECP and other regulatory bodies.</li>
+                           <li><strong>Feasibility Studies:</strong> assessing the financial viability of new projects or expansions before you invest capital.</li>
+                           <li><strong>Cost Reduction Strategies:</strong> analyzing operations to cut waste without sacrificing quality.</li>
+                           <li><strong>Risk Management:</strong> Identifying potential financial threats and creating contingency plans.</li>
+                       </ul>`
+            },
+            'payroll': {
+                title: "Payroll Management",
+                html: `<p>A motivated workforce relies on one fundamental expectation: being paid correctly and on time. However, payroll is more than just writing checks. It involves complex calculations regarding overtime, bonuses, leaves, and strictly regulated tax deductions. Our payroll management services ensure that your employees are happy and your legal obligations are met.</p>
+                       <p>We take the administrative burden off your shoulders, ensuring confidentiality and precision. We handle the complexities of Section 149 (Income Tax on Salary) so you don't have to worry about FBR audits related to employee taxation.</p>
+                       <p><strong>Our Payroll Solutions:</strong></p>
+                       <ul>
+                           <li><strong>Monthly Salary Processing:</strong> Accurate calculation of gross and net pay.</li>
+                           <li><strong>Tax Withholding:</strong> Precise deduction and depositing of employee income tax.</li>
+                           <li><strong>Pay Slips & Reporting:</strong> Generating professional pay slips and management summary reports.</li>
+                           <li><strong>End-of-Service Benefits:</strong> Calculating gratuity and final settlements for departing staff.</li>
+                       </ul>`
+            },
+            'internal': {
+                title: "Internal Controls & Process Improvement",
+                html: `<p>Fraud, theft, and unintentional errors can bleed a business dry if proper checks are not in place. As businesses grow, the informal processes that worked in the beginning often become vulnerabilities. We help you design and implement robust internal control systems that safeguard your assets and ensure data integrity.</p>
+                       <p>Our team conducts a thorough review of your current workflows to identify gaps. We then help you establish Standard Operating Procedures (SOPs) that create accountability and transparency at every level of your organization.</p>
+                       <p><strong>Control Measures We Implement:</strong></p>
+                       <ul>
+                           <li><strong>Segregation of Duties:</strong> Ensuring no single individual has total control over a financial transaction to prevent fraud.</li>
+                           <li><strong>Authorization Protocols:</strong> Establishing clear approval limits for expenses and purchases.</li>
+                           <li><strong>Asset Safeguarding:</strong> Physical and digital controls to protect cash, inventory, and sensitive data.</li>
+                           <li><strong>System Audits:</strong> Periodic reviews to ensure controls are being followed and remain effective.</li>
+                       </ul>`
+            }
+        };
+
+        // Get ID from URL
+        const params = new URLSearchParams(window.location.search);
+        const id = params.get('id');
+
+        // Load content
+        if(data[id]) {
+            document.getElementById('service-title').innerText = data[id].title;
+            document.getElementById('service-description').innerHTML = data[id].html;
+        } else {
+            document.getElementById('service-title').innerText = "Service Not Found";
+            document.getElementById('service-description').innerHTML = "<p>Please return to the home page and select a valid service.</p>";
+        }
+    </script>
+</body>
+</html>

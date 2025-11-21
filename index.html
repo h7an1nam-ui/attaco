@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atta ur Rehman & Co | Financial Strategy & Advisory</title>
+    
+    <!-- Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+        /* --- VARIABLES & RESET --- */
+        :root {
+            --bg-dark: #0a0a0a;
+            --accent-gold: #C5A059;
+            --text-main: #e0e0e0;
+            --font-head: 'Playfair Display', serif;
+            --font-body: 'Inter', sans-serif;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+        body { background: var(--bg-dark); color: var(--text-main); font-family: var(--font-body); overflow-x: hidden; }
+        h1, h2, h3, h4 { font-family: var(--font-head); }
+        a { text-decoration: none; transition: 0.3s; }
+        p { line-height: 1.6; color: #ccc; margin-bottom: 15px; }
+
+        /* --- HEADER & LOGO --- */
+        header {
+            position: fixed; top: 0; width: 100%; z-index: 1000;
+            background: rgba(0, 0, 0, 0.9); border-bottom: 1px solid #222;
+            padding: 0 20px;
+        }
+        nav {
+            max-width: 1200px; margin: 0 auto; height: 90px;
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        .brand-container { display: flex; align-items: center; gap: 15px; }
+        
+        /* LOGO STYLING */
+        .logo-img { height: 50px; width: auto; } 
+        .brand-text { font-size: 1.2rem; font-weight: 700; color: #fff; letter-spacing: 1px; }
+        
+        .nav-links { display: flex; gap: 30px; list-style: none; }
+        .nav-links a { color: #fff; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1px; }
+        .nav-links a:hover { color: var(--accent-gold); }
+
+        /* --- SECTIONS --- */
+        section {
+            min-height: 100vh; position: relative; display: flex; align-items: center; justify-content: center;
+            background-attachment: fixed; background-position: center; background-size: cover; padding: 100px 20px;
+        }
+        .overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.85); z-index: 1; }
+        .container { position: relative; z-index: 2; max-width: 1100px; margin: 0 auto; width: 100%; }
+        .section-title { font-size: 2.5rem; color: var(--accent-gold); margin-bottom: 40px; text-align: center; }
+        .section-title::after { content: ''; display: block; width: 60px; height: 3px; background: var(--accent-gold); margin: 15px auto 0; }
+
+        /* --- HOME --- */
+        #home { background-image: url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070'); }
+        .hero-content { text-align: center; max-width: 800px; }
+        .hero-content h1 { font-size: 3.5rem; color: #fff; margin-bottom: 20px; }
+        .highlight { color: var(--accent-gold); }
+        .btn { display: inline-block; padding: 12px 35px; border: 1px solid var(--accent-gold); color: var(--accent-gold); text-transform: uppercase; font-weight: 600; margin-top: 20px; cursor: pointer; }
+        .btn:hover { background: var(--accent-gold); color: #000; }
+
+        /* --- WHO WE ARE --- */
+        #who-we-are { background-image: url('https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80'); }
+        .value-box { background: rgba(255,255,255,0.05); padding: 30px; border-left: 3px solid var(--accent-gold); margin-top: 30px; }
+
+        /* --- WHAT WE DO (Interactive Cards) --- */
+        #what-we-do { background-image: url('https://images.unsplash.com/photo-1554224155-6726b3ff858f?q=80'); }
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        
+        .service-card {
+            display: block; 
+            background: rgba(20, 20, 20, 0.9); padding: 30px; border: 1px solid #333; 
+            transition: all 0.4s ease; position: relative; overflow: hidden;
+        }
+        .service-card:hover { 
+            border-color: var(--accent-gold); 
+            transform: translateY(-10px); 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+        .service-card h3 { color: var(--accent-gold); font-size: 1.2rem; margin-bottom: 10px; }
+        .service-card p { font-size: 0.95rem; color: #bbb; }
+        .read-more-hint { 
+            font-size: 0.8rem; color: var(--accent-gold); margin-top: 15px; 
+            opacity: 0; transform: translateX(-10px); transition: 0.3s; display: block;
+        }
+        .service-card:hover .read-more-hint { opacity: 1; transform: translateX(0); }
+
+        /* --- DIRECTOR --- */
+        #director { background-image: url('https://images.unsplash.com/photo-1507679799987-c73779587ccf?q=80'); }
+        .director-container { display: flex; flex-wrap: wrap; gap: 50px; align-items: center; justify-content: center; }
+        
+        .director-img { 
+            flex: 0 0 350px; /* Fixed smaller width */
+            max-width: 100%; 
+        }
+        .director-img img { 
+            width: 100%; 
+            border-radius: 5px; 
+            border: 2px solid var(--accent-gold); 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+        
+        .director-info { flex: 1; min-width: 300px; }
+        .director-info h2 { font-size: 2.5rem; color: #fff; margin-bottom: 5px; }
+        .director-info h4 { color: var(--accent-gold); margin-bottom: 20px; font-size: 1.1rem; }
+
+        /* --- CONTACT (Form) --- */
+        #contact { background-image: url('https://images.unsplash.com/photo-1483058712412-4245e9b90334?q=80'); }
+        .contact-wrapper { display: flex; gap: 50px; flex-wrap: wrap; }
+        .contact-info, .contact-form-wrapper { flex: 1; min-width: 300px; }
+        
+        .form-group { margin-bottom: 20px; }
+        .form-group label { display: block; color: var(--accent-gold); margin-bottom: 8px; font-size: 0.9rem; }
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%; padding: 12px; background: #111; border: 1px solid #333; color: #fff;
+            font-family: var(--font-body); outline: none; transition: 0.3s;
+        }
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--accent-gold); }
+        
+        .contact-info-item { display: flex; gap: 15px; margin-bottom: 25px; align-items: center; }
+        .contact-info-item i { font-size: 1.5rem; color: var(--accent-gold); }
+
+        /* --- WHATSAPP --- */
+        .float-wa {
+            position: fixed; bottom: 30px; right: 30px; background-color: #25d366; color: #FFF;
+            width: 60px; height: 60px; border-radius: 50px; text-align: center; font-size: 30px;
+            box-shadow: 2px 2px 3px #999; z-index: 1000; display: flex; align-items: center; justify-content: center;
+            opacity: 0; visibility: hidden; transition: 0.4s; cursor: pointer;
+        }
+        .float-wa.show { opacity: 1; visibility: visible; }
+        .float-wa:hover { background-color: #128C7E; }
+
+        footer { background: #000; color: #555; text-align: center; padding: 20px; font-size: 0.8rem; }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .contact-wrapper { flex-direction: column; }
+            .director-container { flex-direction: column-reverse; }
+            .director-img { flex: 1; width: 70%; } /* Responsive adjustment for mobile */
+            h1 { font-size: 2.2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="brand-container">
+                <!-- REPLACE 'logo.png' WITH YOUR ACTUAL LOGO FILE -->
+                <img src="logo.png" alt="Logo" class="logo-img" onerror="this.style.display='none'">
+                <div class="brand-text">ATTA UR REHMAN & CO</div>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#who-we-are">Who We Are</a></li>
+                <li><a href="#what-we-do">What We Do</a></li>
+                <li><a href="#director">Our Director</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- 1. HOME -->
+    <section id="home">
+        <div class="overlay"></div>
+        <div class="container hero-content" data-aos="fade-up">
+            <h1>Atta ur Rehman & Co<br><span class="highlight">Selling Satisfaction & Trust</span></h1>
+            <p>Precision in Numbers. Power in Strategy.</p>
+            <a href="#who-we-are" class="btn">Discover More</a>
+        </div>
+    </section>
+
+    <!-- 2. WHO WE ARE -->
+    <section id="who-we-are">
+        <div class="overlay"></div>
+        <div class="container" data-aos="fade-up">
+            <h2 class="section-title">Who We Are</h2>
+            <p style="text-align: center; max-width: 800px; margin: 0 auto;">
+                Atta ur Rehman & Co is a dynamic accounting and business advisory firm led by Mr. Atta ur Rehman and supported by a skilled team of 12–15 professionals. We are built on the values of accuracy, trust, and commitment.
+            </p>
+            <div class="value-box">
+                <h4 style="color: var(--accent-gold);">Our Philosophy</h4>
+                <p>We solve problems of unreliable data and compliance pressure through disciplined processes and a client-first mindset. We don’t just manage numbers — we build long-term partnerships.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. WHAT WE DO -->
+    <section id="what-we-do">
+        <div class="overlay"></div>
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">What We Do</h2>
+            <p style="text-align: center; margin-bottom: 40px; color: #aaa;">Click on a service below to learn more.</p>
+            
+            <div class="services-grid">
+                <a href="service-details.html?id=accounting" class="service-card" data-aos="fade-up" data-aos-delay="100">
+                    <h3><i class="fa-solid fa-calculator"></i> Accounting</h3>
+                    <p>Accurate recording and management of financial data.</p>
+                    <span class="read-more-hint">Read More <i class="fa-solid fa-arrow-right"></i></span>
+                </a>
+
+                <a href="service-details.html?id=tax" class="service-card" data-aos="fade-up" data-aos-delay="200">
+                    <h3><i class="fa-solid fa-file-invoice-dollar"></i> Tax & Compliance</h3>
+                    <p>Reliable filing and regulatory guidance.</p>
+                    <span class="read-more-hint">Read More <i class="fa-solid fa-arrow-right"></i></span>
+                </a>
+
+                <a href="service-details.html?id=analysis" class="service-card" data-aos="fade-up" data-aos-delay="300">
+                    <h3><i class="fa-solid fa-chart-line"></i> Financial Analysis</h3>
+                    <p>Detailed analysis of P&L, trends, and margins.</p>
+                    <span class="read-more-hint">Read More <i class="fa-solid fa-arrow-right"></i></span>
+                </a>
+
+                <a href="service-details.html?id=advisory" class="service-card" data-aos="fade-up" data-aos-delay="400">
+                    <h3><i class="fa-solid fa-handshake"></i> Business Advisory</h3>
+                    <p>Practical advice to improve efficiency and reduce costs.</p>
+                    <span class="read-more-hint">Read More <i class="fa-solid fa-arrow-right"></i></span>
+                </a>
+
+                <a href="service-details.html?id=payroll" class="service-card" data-aos="fade-up" data-aos-delay="500">
+                    <h3><i class="fa-solid fa-users"></i> Payroll Management</h3>
+                    <p>Structured solutions for timely employee payments.</p>
+                    <span class="read-more-hint">Read More <i class="fa-solid fa-arrow-right"></i></span>
+                </a>
+
+                <a href="service-details.html?id=internal" class="service-card" data-aos="fade-up" data-aos-delay="600">
+                    <h3><i class="fa-solid fa-shield-halved"></i> Internal Controls</h3>
+                    <p>Strengthening systems to reduce errors and fraud.</p>
+                    <span class="read-more-hint">Read More <i class="fa-solid fa-arrow-right"></i></span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. DIRECTOR (No Animation, Small Image, Updated Text) -->
+    <section id="director">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="director-container">
+                <div class="director-info">
+                    <h2>Mr. Atta ur Rehman</h2>
+                    <h4>Founder & Principal (ACA)</h4>
+                    
+                    <p>Mr. Atta ur Rehman is the driving force behind Atta ur Rehman & Co, establishing the firm as a benchmark for financial accuracy and strategic clarity. With deep expertise in audit, taxation, and business advisory, he has earned a reputation for transforming complex financial data into actionable business intelligence.</p>
+                    
+                    <p>A firm believer in the power of discipline and continuous improvement, Mr. Atta leads a dynamic team of 12–15 professionals. His leadership style bridges the gap between traditional accounting principles and modern financial tools, ensuring that every deliverable meets the highest standards of reliability and transparency.</p>
+                    
+                    <p>Beyond the numbers, Mr. Atta is dedicated to long-term client success. By identifying operational inefficiencies and implementing robust financial controls, he empowers businesses to make smarter decisions and achieve sustainable growth.</p>
+                </div>
+                <div class="director-img">
+                    <!-- Replace with your image: director.jpg -->
+                    <img src="director.jpg" alt="Mr. Atta ur Rehman" onerror="this.src='https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80'">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. CONTACT & LEAD FORM -->
+    <section id="contact">
+        <div class="overlay"></div>
+        <div class="container" data-aos="fade-up">
+            <h2 class="section-title">Get In Touch</h2>
+            
+            <div class="contact-wrapper">
+                <!-- Contact Details -->
+                <div class="contact-info">
+                    <p>Ready to improve your financial strategy? Fill out the form or contact us directly.</p>
+                    
+                    <div class="contact-info-item">
+                        <i class="fa-solid fa-location-dot"></i>
+                        <div>
+                            <h4 style="color:#fff; font-size:1rem;">Location</h4>
+                            <span>Pakistan</span>
+                        </div>
+                    </div>
+
+                    <div class="contact-info-item">
+                        <i class="fa-solid fa-envelope"></i>
+                        <div>
+                            <h4 style="color:#fff; font-size:1rem;">Email</h4>
+                            <a href="mailto:attaurrehman19am@gmail.com" style="color:#ccc;">attaurrehman19am@gmail.com</a>
+                        </div>
+                    </div>
+
+                    <div class="contact-info-item">
+                        <i class="fa-brands fa-whatsapp"></i>
+                        <div>
+                            <h4 style="color:#fff; font-size:1rem;">WhatsApp</h4>
+                            <a href="https://wa.me/923006499641" style="color:#ccc;">+92 300 6499641</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- LEAD GENERATION FORM -->
+                <div class="contact-form-wrapper">
+                    <!-- IMPORTANT: Replace 'YOUR_FORMSPREE_ID' with your actual Formspree Form ID -->
+                    <form action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST">
+                        
+                        <div class="form-group">
+                            <label>Full Name</label>
+                            <input type="text" name="name" required placeholder="Enter your name">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Email Address</label>
+                            <input type="email" name="_replyto" required placeholder="Enter your email">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Service Needed</label>
+                            <select name="service">
+                                <option value="General Inquiry">General Inquiry</option>
+                                <option value="Accounting">Accounting & Bookkeeping</option>
+                                <option value="Taxation">Tax Preparation</option>
+                                <option value="Advisory">Business Advisory</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Message</label>
+                            <textarea name="message" rows="4" placeholder="How can we help?"></textarea>
+                        </div>
+
+                        <button type="submit" class="btn" style="width:100%; margin-top:0;">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Atta ur Rehman & Co. All Rights Reserved.</p>
+    </footer>
+
+    <!-- Floating WhatsApp (Hidden on Top, Shows on Scroll) -->
+    <a href="https://wa.me/923006499641" class="float-wa" target="_blank" id="whatsappBtn">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ offset: 120, duration: 1000, once: true });
+
+        // Scroll Logic for WhatsApp
+        const whatsappBtn = document.getElementById('whatsappBtn');
+        const homeSection = document.getElementById('home');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > (homeSection.offsetHeight - 200)) {
+                whatsappBtn.classList.add('show');
+            } else {
+                whatsappBtn.classList.remove('show');
+            }
+        });
+    </script>
+</body>
+</html>
